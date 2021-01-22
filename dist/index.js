@@ -150,7 +150,7 @@ var BlogDao = /** @class */ (function () {
     }
     BlogDao.prototype.getBlogEntries = function () {
         return this.taskQueue.execute({
-            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/blog'),
+            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/blog?storeCode=all'),
             payload: {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -161,7 +161,7 @@ var BlogDao = /** @class */ (function () {
     };
     BlogDao.prototype.getBlogEntry = function (blogEntryId) {
         return this.taskQueue.execute({
-            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/blog/' + blogEntryId),
+            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/blog/' + blogEntryId + '?storeCode=all'),
             payload: {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },

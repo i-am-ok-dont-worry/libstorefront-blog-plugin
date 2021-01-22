@@ -19,4 +19,5 @@ export interface BlogEntry {
     tag_ids: string;
     product_ids: string;
     related_products: string;
+    extension_attributes: Record<string, any>;
 }

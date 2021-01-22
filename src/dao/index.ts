@@ -6,7 +6,7 @@ export class BlogDao {
 
     public getBlogEntries (): Promise<Task> {
         return this.taskQueue.execute({
-            url: URLTransform.getAbsoluteApiUrl('/api/vendor/blog'),
+            url: URLTransform.getAbsoluteApiUrl('/api/vendor/blog?storeCode=all'),
             payload: {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -18,7 +18,7 @@ export class BlogDao {
 
     public getBlogEntry (blogEntryId): Promise<Task> {
         return this.taskQueue.execute({
-            url: URLTransform.getAbsoluteApiUrl('/api/vendor/blog/' + blogEntryId),
+            url: URLTransform.getAbsoluteApiUrl('/api/vendor/blog/' + blogEntryId + '?storeCode=all'),
             payload: {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },

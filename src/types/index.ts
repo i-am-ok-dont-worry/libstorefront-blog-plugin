@@ -18,5 +18,6 @@ export interface BlogEntry {
     store_ids: string,
     tag_ids: string,
     product_ids: string,
-    related_products: string
+    related_products: string,
+    extension_attributes: Record<string, any>
 }
