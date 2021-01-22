@@ -1,19 +1,33 @@
-# NAMING CONVENTIONS
-* `name` property in package.json should be changed to a module name
-* `description` property in package.json should describe plugin feature
+# Blog plugin
+Extension that allows to display blog posts from Magento.
 
-## Write plugin
-Entry point for plugin should be `index.ts` file. LSF plugin is a default void function 
-that accepts initialized Libstorefront instance.
+## Usage
+To use plugin add plugin dependency to the LSF lib:
+```javascript
+const LSF = new LibStorefront({
+    plugins: [
+        BlogPlugin
+    ]
+});
+```
 
-Plugin has access to all lsf functionality including IOC container. Dependencies
-can be rebound according to plugin needs.
+and get `BlogService` registered by lib:
+```javascript
+LSF.get(BlogService)
+```
+
+## Service
+Plugin registers service `BlogService` which serves as a plugin entry point.
+Service exposes methods:
+* `getBlogPosts (): Promise<BlogEntry[]>` - Returns list blog posts
+* `getBlogPost (blogEntryId: string)` - Returns a single blog post
 
 ## Build plugin
 Run `npm run build` to build plugin.
 Output can be found in `/dist` catalog.
 
 ## Test plugin
-Plugin must be tested in isolation. Unit tests can be performed via jest framework
-in `/tests/test.ts` file.
-Template includes by default mocked LocalStorage object.
+Plugin can be tested in isolation. To run plugin integration test:
+```shell script
+npm run test:integration
+```
