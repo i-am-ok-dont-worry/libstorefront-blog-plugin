@@ -21,6 +21,9 @@ Plugin registers service `BlogService` which serves as a plugin entry point.
 Service exposes methods:
 * `getBlogPosts (): Promise<BlogEntry[]>` - Returns list blog posts
 * `getBlogPost (blogEntryId: string)` - Returns a single blog post
+* `getBlogCategories ()` - Returns a list of blog post categories
+* `getBlogCategory (blogCategoryId: string)` - Returns a single blog post category
+* `getBlogPostsForCategory (blogCategoryId: string)` - Returns posts list for a category
 
 ## Build plugin
 Run `npm run build` to build plugin.
