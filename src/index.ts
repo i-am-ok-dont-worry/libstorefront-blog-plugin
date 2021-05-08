@@ -9,9 +9,9 @@ import { BlogDefaultState } from './store/blog.default';
  * Plugin provides support for Magento blog
  */
 export const BlogPlugin = ((libstorefront: LibStorefront) => {
-    libstorefront.getIOCContainer().bind<BlogDao>(BlogDao).to(BlogDao);
-    libstorefront.getIOCContainer().bind<BlogService>(BlogService).to(BlogService);
-    libstorefront.listenTo(HookType.AfterCoreModulesRegistered, (lsf: LibStorefront) => {
-        lsf.registerModule(createLibstorefrontModule('blog', blogReducer, BlogDefaultState));
-    });
+  libstorefront.getIOCContainer().bind<BlogDao>(BlogDao).to(BlogDao);
+  libstorefront.getIOCContainer().bind<BlogService>(BlogService).to(BlogService);
+  libstorefront.listenTo(HookType.AfterCoreModulesRegistered, (lsf: LibStorefront) => {
+    lsf.registerModule(createLibstorefrontModule('blog', blogReducer, BlogDefaultState));
+  });
 }) as LibstorefrontPlugin;
