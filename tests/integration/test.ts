@@ -5,25 +5,34 @@ import {BlogService} from "../../src/service";
 console.warn('Test suite initialized');
 
 const LSF = new LibStorefront({
+  api: {
+    url: 'https://api.libertymotors.s16.grupakmk.pl'
+  },
   plugins: [
     BlogPlugin
-  ]
-}, 'https://api.liberty.s16.grupakmk.pl');
+  ],
+  default_website_id: '1',
+  default_store_code: 'lms_pl',
+  defaultStoreId: '1',
+  websites: [{
+    website_id: '1',
+    stores: [{
+      general: {
+        website_code: 'lm',
+        store_code: 'lms_pl',
+        store_id: '1',
+        default_country: 'pl',
+        elasticsearch: {
+          host: '/api/catalog',
+          index: 'vue_storefront_catalog'
+        }
+      }
+    }]
+  }],
+});
 
 (async () => {
   const service = LSF.get(BlogService);
-  const returns = await service.getBlogPost('1');
-  debugger;
-
-  const returns2 = await service.getBlogPosts();
-  debugger;
-
   const returns3 = await service.getBlogCategories();
-  debugger;
-
-  const returns4 = await service.getBlogCategory(4);
-  debugger;
-
-  const returns5 = await service.getBlogPostsForCategory('4');
-  debugger;
+  const blogReduxState = await LSF.getState().blog;
 })();
