@@ -32,11 +32,12 @@ export namespace BlogThunks {
     try {
       const response = await IOCContainer.get(BlogDao).getBlogCategories();
       if (response && response.code === HttpStatus.OK && response.result) {
-        await dispatch(BlogActions.setCurrent(response.result));
+        await dispatch(BlogActions.setCategories(response.result));
         return response.result;
       }
     } catch (e) {
       Logger.error('Cannot fetch blog categories', 'blog-plugin', e);
+      return null;
     }
   };
 
@@ -44,11 +45,11 @@ export namespace BlogThunks {
     try {
       const response = await IOCContainer.get(BlogDao).getBlogCategory(blogCategoryId);
       if (response && response.code === HttpStatus.OK && response.result) {
-        await dispatch(BlogActions.setCurrent(response.result));
         return response.result;
       }
     } catch (e) {
       Logger.error('Cannot fetch blog post', 'blog-plugin', e);
+      return null;
     }
   };
 
@@ -56,11 +57,11 @@ export namespace BlogThunks {
     try {
       const response = await IOCContainer.get(BlogDao).getPostsForCategory(blogCategoryId);
       if (response && response.code === HttpStatus.OK && response.result) {
-        await dispatch(BlogActions.setCurrent(response.result));
         return response.result;
       }
     } catch (e) {
-      Logger.error('Cannot fetch blog post', 'blog-plugin', e);
+      Logger.error('Cannot fetch blog posts', 'blog-plugin', e);
+      return null;
     }
   };
 }
