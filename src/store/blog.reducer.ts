@@ -11,6 +11,9 @@ export const blogReducer: Reducer<BlogModuleState, AnyAction> = (state: BlogModu
         case BlogActions.SET_CURRENT: {
             return { ...state, current: action.payload };
         }
+        case BlogActions.SET_CATEGORIES: {
+            return { ...state, categories: action.payload };
+        }
         default: return state || BlogDefaultState;
     }
 }

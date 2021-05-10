@@ -1,11 +1,13 @@
-import { BlogEntry } from '../types';
+import {BlogCategory, BlogEntry} from '../types';
 
 export const BlogDefaultState = {
     items: [],
-    current: null
-}
+    current: null,
+    categories: []
+};
 
 export interface BlogModuleState {
     items: BlogEntry[],
-    current: BlogEntry
+    current: BlogEntry,
+    categories: BlogCategory[]
 }
