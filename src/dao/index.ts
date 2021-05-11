@@ -5,7 +5,7 @@ import { Task, TaskQueue, URLTransform } from '@grupakmk/libstorefront';
 export class BlogDao {
   public getBlogEntries (): Promise<Task> {
     return this.taskQueue.execute({
-      url: URLTransform.getMultistoreApiUrlNext('/api/vendor/blog'),
+      url: URLTransform.getAbsoluteApiUrl('/api/vendor/blog?storeCode=all'),
       payload: {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -17,7 +17,7 @@ export class BlogDao {
 
   public getBlogEntry (blogEntryId): Promise<Task> {
     return this.taskQueue.execute({
-      url: URLTransform.getMultistoreApiUrlNext(`/api/vendor/blog/${blogEntryId}`),
+      url: URLTransform.getAbsoluteApiUrl(`/api/vendor/blog/${blogEntryId}?storeCode=all`),
       payload: {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -29,7 +29,7 @@ export class BlogDao {
 
   public getBlogCategory (blogCategoryId): Promise<Task> {
     return this.taskQueue.execute({
-      url: URLTransform.getMultistoreApiUrlNext(`/api/vendor/blog/category/${blogCategoryId}`),
+      url: URLTransform.getAbsoluteApiUrl(`/api/vendor/blog/category/${blogCategoryId}?storeCode=all`),
       payload: {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -41,7 +41,7 @@ export class BlogDao {
 
   public getBlogCategories (): Promise<Task> {
     return this.taskQueue.execute({
-      url: URLTransform.getMultistoreApiUrlNext(`/api/vendor/blog/category/list`),
+      url: URLTransform.getAbsoluteApiUrl(`/api/vendor/blog/category/list?storeCode=all`),
       payload: {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -53,7 +53,7 @@ export class BlogDao {
 
   public getPostsForCategory (blogCategoryId): Promise<Task> {
     return this.taskQueue.execute({
-      url: URLTransform.getMultistoreApiUrlNext(`/api/vendor/blog/post/category/${blogCategoryId}`),
+      url: URLTransform.getAbsoluteApiUrl(`/api/vendor/blog/post/category/${blogCategoryId}?storeCode=all`),
       payload: {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },

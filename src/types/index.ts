@@ -4,16 +4,16 @@ export interface BlogCategory {
   name: string,
   content: string,
   url_key: string,
-  meta_title: string, 
+  meta_title: string,
   meta_description: null,
   meta_keywords: null,
-  path: string, 
+  path: string,
   level: number,
   position: number
 }
 
 export interface BlogEntry {
-  id: null,
+  id: number,
   type: string,
   status: string,
   author_id: number,
@@ -28,10 +28,10 @@ export interface BlogEntry {
   featured_alt: string,
   created_at: string,
   pinned: string,
-  category_ids: string,
-  store_ids: string,
-  tag_ids: string,
-  product_ids: string,
-  related_products: string,
+  category_ids: string[],
+  store_ids: string[],
+  tag_ids: string[],
+  product_ids: string[],
+  related_products: string[],
   extension_attributes: Record<string, any>
 }
