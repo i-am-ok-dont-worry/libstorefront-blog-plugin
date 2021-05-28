@@ -34,5 +34,7 @@ const LSF = new LibStorefront({
 (async () => {
   const service = LSF.get(BlogService);
   const returns3 = await service.getBlogCategories();
+  const posts = await service.getBlogPostsForCategory('4', true);
   const blogReduxState = await LSF.getState().blog;
+  debugger;
 })();

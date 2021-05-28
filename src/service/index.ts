@@ -1,9 +1,9 @@
 import { injectable, inject } from 'inversify';
-import { 
-  AbstractStore, 
-  LibstorefrontInnerState 
+import {
+  AbstractStore,
+  LibstorefrontInnerState
 } from '@grupakmk/libstorefront';
-import { 
+import {
   BlogEntry,
   BlogCategory
 } from '../types';
@@ -35,9 +35,9 @@ export class BlogService {
   public getBlogCategories (): Promise<BlogCategory[]> {
     return this.store.dispatch(BlogThunks.getCategories());
   }
-  
+
   /**
-   * Returns a single blog category 
+   * Returns a single blog category
    * @param {string} blogCategoryId
    * @param {Promise<BlogCategory>}
    */
@@ -50,8 +50,8 @@ export class BlogService {
    * @param {string} blogCategoryId
    * @param {Promise<BlogEntry[]>}
    */
-  public getBlogPostsForCategory (blogCategoryId: string): Promise<BlogEntry[]> {
-    return this.store.dispatch(BlogThunks.getPostsForCategory(blogCategoryId));
+  public getBlogPostsForCategory (blogCategoryId: string, updateState?: boolean): Promise<BlogEntry[]> {
+    return this.store.dispatch(BlogThunks.getPostsForCategory(blogCategoryId, updateState));
   }
 
   public constructor(@inject(AbstractStore) private store: AbstractStore<LibstorefrontInnerState>) {}

@@ -53,10 +53,14 @@ export namespace BlogThunks {
     }
   };
 
-  export const getPostsForCategory = (blogCategoryId) => async (dispatch, getState) => {
+  export const getPostsForCategory = (blogCategoryId, updateState?: boolean) => async (dispatch, getState) => {
     try {
       const response = await IOCContainer.get(BlogDao).getPostsForCategory(blogCategoryId);
       if (response && response.code === HttpStatus.OK && response.result) {
+        const { items } = response.result;
+        if (updateState && items) {
+          await dispatch(BlogActions.setBlogPosts(items));
+        }
         return response.result;
       }
     } catch (e) {
